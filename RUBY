@@ -1,0 +1,251 @@
+CONTROL FLOW IN RUBY
+
+CONDICIONAL if/elsif/else
+print "Integer please: "
+user_num = Integer(gets.chomp)
+
+if user_num < 0
+  puts "You picked a negative integer!"
+elsif user_num > 0
+  puts "You picked a positive integer!"
+else
+  puts "You picked zero!"
+end
+
+CONDICIONAL UNLESS
+hungry = false
+
+unless hungry
+  puts "I'm writing Ruby programs!"
+else
+  puts "Time to eat!"
+end
+
+DUCKIFYING
+print "Let's go Duckifying in the streets!!"
+(user_input = gets.chomp).downcase!
+if user_input.include? "s"
+  user_input.gsub!(/s/, "th")
+  puts "I'm Donaldazing you!, #{user_input}!"
+  else
+  print "Hey!! There's no S in your phrase!! let me duckify you!!!!"
+end
+
+LOOPS
+
+WHILE LOOP
+counter = 1
+while counter < 11
+  puts counter
+  counter = counter + 1 #ojo!! No olvidar nunca el “incrementor” (tb. counter += 1) para evitar crashes
+end
+
+UNTIL LOOP
+counter = 1
+until counter > 10
+  puts counter
+  # Add code to update 'counter' here!
+  counter = counter + 1
+end
+
+FOR LOOP
+for num in 1...10    # esto imprime del 1 al 9; con dos puntos (en vez de tres) imprime del 1 al 10.
+  puts num
+end
+ITERATORS & BLOCKS
+
+“LOOP” ITERATOR
+i = 20
+loop do
+  i -= 1
+  print "#{i}"
+  break if i <= 0
+end
+
+“NEXT” KEYWORD
+i = 20
+loop do
+  i -= 1
+  next if i%2 != 0  #imprime los impares de la lista loopeada.
+  print "#{i}"
+  break if i <= 0
+end
+
+“.EACH” METHOD
+odds = [1,3,5,7,9]
+
+# Add your code below!
+odds.each do |x|
+	x = x*2
+	print "#{x}"
+end
+
+“TIMES” ITERATOR. (supercompact ‘for’ loop)
+15.times {print "Milly Vanilly: The Originals"}
+
+EJERCICIO. Redactor iterator (EDITOR de TEXTOS). (dudas, MUCHASSS, en: http://www.codecademy.com/es/courses/ruby-beginner-en-mzrZ6/0?curriculum_id=5059f8619189a5000201fbcb#!/exercises/5)
+
+puts "Text to search through..."
+text = gets.chomp
+puts "Words to redact"
+redact = gets.chomp
+
+words = text.split(" ")
+
+words.each do |word|
+  if  word != redact
+	print word + " "
+  else
+	print "REDACTED "
+  end
+end
+
+
+ 
+HASHES
+
+LITERAL NOTATION:
+
+my_hash = { "name" => "Eric",
+  "age" => 26,
+  "hungry?" => true
+}
+
+puts my_hash["name"]
+puts my_hash["age"]
+puts my_hash["hungry?"]
+
+
+DOT.NOTATION:
+
+pets = Hash.new
+
+pets["Palomba"] = "vaca"
+pets["Bobi"] = "perru"
+pets["Finu"] = "gatu"
+
+puts pets["Palomba"]
+
+
+LOOPS w/ HASHES: ITERATORS
+
+NESTED “.EACH” LOOPS for 2-D ARRAY
+s = [["ham", "swiss"], ["turkey", "cheddar"], ["roast beef", "gruyere"]]
+
+s.each do |sandwich_pair|
+  sandwich_pair.each do |sandwich| puts "#{sandwich}"
+  end
+end
+
+
+ITERATING OVER HASHES
+secret_identities = { "The Batman" => "Bruce Wayne",
+  "Superman" => "Clark Kent",
+  "Wonder Woman" => "Diana Prince",
+  "Freakazoid" => "Dexter Douglas"
+}
+  secret_identities.each { |key, value| puts "#{key}: #{value}" }
+
+EJEMPLO: CREAR UN HISTOGRAMA
+puts "Text please: "
+text = gets.chomp
+
+words = text.split(" ")
+frequencies = Hash.new(0)
+words.each { |word| frequencies[word] += 1 }
+frequencies = frequencies.sort_by {|a, b| b }
+frequencies.reverse!
+frequencies.each { |word, frequency| puts word + " " + frequency.to_s }
+
+ 
+METHODS
+
+Es fundamental dividir nuestro programa en diferentes unidades interconectadas y gobernadas por MÉTODOS. Esto ayuda a identificar, aislar y corregir posibles errores; además, asignando tareas específicas a métodos separados, lo que se denomina como “separation of concerns”, podemos conseguir un programa menos redundante, superfluo y -muy importante- que el código pueda ser RE-UTILIZADO en otras partes del programa o incluso en otros programas…
+
+IDENTIFICADOR DE NºS PRIMOS
+def prime(n)
+  puts "That's not an integer." unless n.is_a? Integer
+  is_prime = true
+  for i in 2..n-1
+    if n % i == 0
+      is_prime = false
+    end
+  end
+  if is_prime
+    puts "#{n} is prime!"
+  else
+    puts "#{n} is not prime."
+  end
+end
+
+prime(2)
+prime(9)
+prime(11)
+prime(51)
+prime(97)
+
+METHODS (or FUNCTIONS) IN RUBY: SPLAT ARGUMENTS
+Normalmente, tanto en JavaScript como en Ruby, cuando damos un parámetro a un Método, el programa sólo sabe que vas a meter cierto valor (argumento) a la cadena de operaciones cuando “llamas” a la función.
+Y con los “Splat Arguments” además, decimos de antemano al programa que un parámetro podría representar a varios “inputs”.
+
+def what_up(greeting, *bros)	 # greeting & bros son los parámetros
+  bros.each { |bro| puts "#{greeting}, #{bro}!" }
+end
+what_up("What up", "Justin", "Ben", "KevinSorbo") #Llamando al método:entre paréntesis, los argumentos
+
+OTRO EJEMPLO: nótese el “?”  “Remember, it's a Ruby best practice to end method names that produce boolean values with a question mark.”
+def greeter(name)
+	return "Hello I love wancha tell me your name..." + name
+end
+def by_three?(number)
+	if number%3 == 0
+	  return true
+	else
+	  return false
+	end
+end 
+
+ 
+BLOCKS
+
+“You can think of blocks as a way of creating methods that don't have a name. (These are similar to anonymous functions in JavaScript or lambdas in Python.). Blocks can be defined with either the keywords do and end or with curly braces ({}).”
+
+# method that capitalizes a word
+def capitalize(string) 
+  puts "#{string[0].upcase}#{string[1..-1]}"
+end
+
+capitalize("ryan") # prints "Ryan"
+capitalize("jane") # prints "Jane"
+
+# block that capitalizes each string in the array
+["ryan", "jane"].each {|string| puts "#{string[0].upcase}#{string[1..-1]}"} # prints "Ryan", then "Jane"(*)
+
+
+“The capitalize method capitalizes a word (see the Hint for how this is done), and we can continually invoke the capitalize method by name. We can capitalize("matz"), capitalize("eduardo"), or any string we like to our hearts' content.
+However, the block that we define (following .each) will only be called once, and in the context of the array that we are iterating over. It appears just long enough to do some work for each.”
+(*) “The bracket notation is treating each string like an array of characters; you can find details about this in the Ruby documentation. string[0] refers to the first character in the string; string[1..-1] refers to the range of the second through final characters. Therefore, the method prints out the capitalized version of the first character and prints the second through final characters as-is.”
+
+
+SORTING w-BLOCKS
+EJEMPLO:
+books = ["Charlie and the Chocolate Factory", "War and Peace", "Utopia", "A Brief History of Time", "A Wrinkle in Time"]
+
+# To sort our books in ascending order, in-place
+books.sort! { |firstBook, secondBook| firstBook <=> secondBook }
+
+# Sort your books in descending order, in-place below
+
+books.sort!.reverse!
+
+EJEMPLO.  SORTING w-CONTROL FLOW:
+def alphabetize(arr, rev=false)
+	if rev
+	return arr.sort! { |book1, book2| book2 <=> book1 } #  tb.vale: return arr.sort!.reverse
+	else
+	arr.sort! { |book1, book2| book1 <=> book2 } #  y aquí: arr.sort!
+	end
+end
+books=["Heart of Darkness", "Code Complete", "The Lorax", "The Prophet", "Absalom, Absalom!"]
+
+puts alphabetize(books, true) 	#caso de lista ordenada a la inverse Z-A.
