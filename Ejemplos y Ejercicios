@@ -1,0 +1,2032 @@
+http://www.codecademy.com/es/courses/lang/javascript (Courses Java Script)
+
+- FUNCIÓN DOBLE CON POTENCIA: f(x, y) = x^ y
+
+var power = function (base, exponent) {
+  var result = 4;
+  for (var i = 0; i < exponent; i++) {
+    result = result * base;
+  }
+  return result;
+};
+
+power(2, 2);
+
+
+- FUNCIÓN BÁSICA. Multiplicador.
+
+var calculate = function (number) {
+    var val = number * 10;
+    console.log(val);
+};
+calculate(10);
+
+
+- FUNCIÓN BÁSICA. Multiplicador + saludo.
+
+var calculate = function (number) {
+    var val = number * 10;
+    console.log("la cuenta sube a "+val+"€");
+};
+
+//Badly written function with syntax errors
+
+var greeting = function (name)
+{
+    console.log("¡Hola " + name+"!");
+  };
+	
+greeting("Gelu");//véase que se llama a la función con el nombre entre comillas
+calculate(10);
+
+
+FUNCIÓN BÁSICA C/ RETURN.
+
+var quarter = function (number)
+{
+	return number/4;
+};
+
+if (quarter(24) % 3 === 0 ) {
+  console.log("The statement is true");
+} else {
+  console.log("The statement is false");
+}
+
+ 
+- FUNCIÓN CON VARIABLE GLOBAL
+
+var multiplied;
+
+var timesTwo = function(number) {
+    
+    multiplied = number * 2;};
+
+timesTwo(4);//incluso podemos eliminar ésta línea. Gelu.
+
+console.log(multiplied);
+
+
+- LOOP CUENTA ATRÁS
+
+for( var i = 10 ; i >= "0" ; i-=1 ) {
+    if(i===0) {console.log("IGNITION!");}
+    else    {console.log(i);}
+}
+
+
+- LOOP “FizzBuzz”.
+
+   1º) con un “nested if statement”
+for (var i=1; i<=20; i++)
+
+if(i%3 === 0)
+{   
+    if (i%5 === 0)
+    console.log("FizzBuzz");
+    else {
+
+    console.log("Fizz");}
+}
+else if (i%5 === 0){
+    console.log("Buzz");
+}
+else
+ {    console.log(i);}
+
+
+   2º) con “if statement” covencional (ojo con el orden de los condicionales)
+
+for (var i=1; i<=20; i++)
+if(i%15===0) {
+	console.log("FizzBuzz");}
+
+else if(i%3===0) {
+console.log("Fizz");
+}
+else if(i%5===0) {
+	console.log("Buzz");}
+
+else {
+	console.log(i);}
+
+
+- LOOP CON ARRAY
+var cities = ["Melbourne", "Amman", "Helsinki", "NYC"];
+
+for (var i = 0; i < cities.length; i++) {
+    console.log("I would like to visit" + " all guitar shops in " + cities[i]);
+}
+
+-	LOOP CON ARRAY (busca el mayor nº de un listado)
+var array = [3 , 6, 2, 56, 32, 5, 89, 32];
+var largest= 0;
+	for(i=0; i<=8; i++)
+{
+	if (array[i]>largest)
+	{largest=array[i];}
+}
+console.log(largest);
+
+-	LOOP CON ARRAY (busca el menor nº de un listado)
+var array = [3 , 6, 2, 56, 32, 5, 89, 32];
+var smallest= 100;
+    for(i=0; i<=8; i++)
+{
+	if (array[i]<smallest)
+	{smallest=array[i];}
+}
+console.log(smallest);
+
+-	LOOP CON ARRAY (imprime los dos últimos elementos del array)
+var suits = ["hearts","clubs","diamonds","spades"];
+for (i=2; i<suits.length; i++) {
+    console.log(suits[i]);}
+MÉTODOS “push“ y “splice”, para añadir o quitar elementos respectmte.
+var fruits = [ "apple", "banana" ];
+fruits.push("pear");
+fruits.splice(0,1);
+console.log(fruits);
+----------------------------------------------------------------------------------------------------------
+-	LOOP c- un SUBSTRING. Lista las letras de una “string” en VERTICAL.
+var substring = function(input, start, end) {
+			var i;
+		for(i=start; i<=end; i++) {
+			console.log(input[i]);
+		}
+};
+substring("lorem ipsum dolor", 6, 10);
+
+-	LOOP c-un SUBSTRING. Lista las letras de una “string” en HORIZONTAL.
+var substring = function(input, start, end) {
+			var subset = "";
+			var i;
+		for(i=start; i<=end; i++) {
+			subset = subset + input[i]; 
+		}
+	return subset;};
+console.log(substring("lorem ipsum dolor", 6, 10));
+MULTI-DIMENSIONAL ARRAY w-FOR LOOPs.
+DOS MANOS DE POKER:
+//Your three dimensional array from the last exercise probably
+//looked something like this:
+var hands = [];
+hands[0] = [ [3,"H"], ["A","S"], [1,"D"], ["J","H"], ["Q","D"] ];
+hands[1] = [ [9,"C"], [6,"C"], ["K","H"], [3,"C"], ["K","H"] ];
+
+//Loop over every dimension in the array, logging out the suit and rank
+//of each card in both hands
+//1. loop over each hand
+for (i=0; i<hands.length; i++) {
+   	//2. loop over each card array in each hand
+    for (j=0; j<hands[i].length; j++) {
+       	//3. loop over each rank/suit array for each card in each hand
+        for (z=0; z<hands[i][j].length; z++) {
+            //4. log the value of the rank/suit array item
+            console.log(hands[i][j][z]);
+        }
+    }
+}
+
+ARRAY. Añadir una mano más y modificar el resultado de una de ellas
+var cards = [ [8, "clubs"], ["A", "hearts"]];
+//add a 3rd card to the array: J of spades
+cards[2] = ["J", "Spades"];//tb.: cards.push( ['J', 'spades'] );
+//change the rank of the first card to 2
+cards [0][0] = 2;
+
+MULTI-DIMENSIONAL ARRAY (2-D),  creado a partir de dos previos.
+
+//array 1: the suits
+var suits = ["clubs","hearts","diamonds","spades"];
+
+//array 2: the ranks
+var ranks = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"];
+
+//using for loops, modify the "deck" array so that it becomes a 
+//two-dimensional array that stores every card in the deck; 
+//e.g. [1, "clubs"], [2, "clubs"],etc...["A", "spades"]
+var deck = [];
+		for(i=0; i<suits.length; i++) {
+			for(j=0; j<ranks.length; j++) {
+				var card = [suits[i]][ranks[j]];
+				deck.push(card);	}	}
+
+ASSOCIATIVE ARRAYS
+var hand = [{"suit": "clubs", "rank": 8}, {"suit": "spades", "rank": "A"}, {"suit": "hearts", "rank": 2}, {"suit": "hearts", "rank": "K"}, {"suit": "clubs", "rank": 9}];
+		for(var cards in hand){ 
+var showCards = hand[cards]; 
+console.log(hand[cards].suit + " " + hand[cards].rank);
+}
+ 
+ASSOCIATIVE ARRAYS – FUNCIÓN CLONADORA
+var card1 = {"suit":"clubs", "rank": 8};
+
+var clone = function(original) {
+        var copy = {};
+			for (var key in original) {
+				copy[key] = original[key];
+			}
+		return copy;
+	};
+var card2 = clone(card1);
+
+card2.rank = 3;
+
+console.log(card1);
+console.log(card2);
+
+REPARTO DE MANOS DE POKER
+//here's our players array from exercise 1
+var players = [];
+players[0] = {'name': 'Robert', hand: []};
+players[1] = {'name': 'Joe', hand: []};
+
+//here's our code to create the deck
+var suits = ['clubs','diamonds','hearts','spades'];
+var ranks = [2,3,4,5,6,7,8,9,10,'J','Q','K','A'];
+var deck = [];
+for (var i=0;i<suits.length;i++) {
+    for (var j=0;j<ranks.length;j++) {
+        var card = {'rank': ranks[j], 'suit':suits[i]};
+        deck.push(card);
+    }
+}
+
+//This will shuffle the deck. Nothing for you to do here. Just here to 
+//make the final output a little more realistic
+deck.sort(function() {return 0.5 - Math.random();});
+
+//Deal 5 cards to each player. Make sure you deal them out 
+//one player at a time, just like in a real poker game.
+var c = 0;
+for (var i=0; i<5; i++) { 
+for (var p=0;p<players.length;p++) {
+var card = deck[c];
+players[p].hand.push(card);
+c++;
+} 
+} 
+WHILE LOOP I. De un nombre completo imprime sólo el Nombre (en vertical)
+var name = "John Doe";
+var getFirstName = function(fullName) {
+		var next = fullName[0];
+		var i = 0;
+		var length = fullName.length;
+	while(i < length && next !== " ") {
+		console.log(fullName[i]);
+		i++;
+		next = fullName[i];
+	}
+};
+getFirstName(name);
+
+/*la variable "next" se puede obviar, borrando las líneas 3 y 9, 
+y corrigiendo los parámetros del condicional, quedando así:
+
+var name = "John Doe";
+var getFirstName = function(fullName) {
+    var i = 0;
+    var length = fullName.length;
+
+    while(i < length && fullName[i] != " ") {
+        console.log(fullName[i]);
+        i++;
+    }
+};
+getFirstName(name);
+*/
+
+
+WHILE LOOP II. De un nombre completo imprime sólo el Nombre (en horiz.)
+var name = "John Doe";
+var getFirstName = function(fullName) {
+  var firstName = "";
+  var i = 0;
+  length = fullName.length;
+
+  while (i < length && fullName[i] !== " ") {
+    firstName += fullName[i];
+    i++;
+  }
+  return firstName;
+  };
+
+console.log(getFirstName(name));
+
+EMBEDDED LOOPS
+var count = 0;
+for(i = 0; i < 3; i++){
+    for(y = 0; y < 4; y++){
+      count=count+1;//tb. “count++”
+    }
+}
+console.log(count); 
+- OBTENCIÓN DEL Nº MÁS PEQUEÑO EN VALOR ABSOLUTO
+MI PRIMER PROGRAMA!! TOTALMENTE MÍO!!!
+
+var array = [30, -6, 10, 56, -32, 5, 89, 32];
+var smallest = 100;
+var valorAbsoluto = function (i)
+{
+    if(array[i]<=0) {return array[i]*(-1);}
+	else {return array[i];}
+};
+
+    for(i=0; i<=8; i++)
+{
+	if (valorAbsoluto(i)<smallest)
+       
+	{smallest=valorAbsoluto(i);}
+}
+
+
+- FUNCIÓN “VALOR ABSOLUTO”
+
+var valorAbsoluto = function (i)
+{
+    if(i<=0) {return i*(-1);}
+    else {return i;}
+};
+
+valorAbsoluto(-100.6);
+
+
+EJERCICIO 1 – N.Y. TAXI:
+
+// add a parameter called hourOfDay to the function
+//el orden de las variables es importante.
+var taxiFare = function (milesTraveled, hourOfDay) {
+  var baseFare = 2.50;
+  var costPerMile = 2.00;
+  var nightSurcharge = 0.50; // 8pm to 6am, every night
+
+  var cost = baseFare + (costPerMile * milesTraveled);
+  
+  // add the nightSurcharge to the cost starting at 
+  // 8pm (20) or if it is before 6am (6)
+    if(hourOfDay<6 || hourOfDay>=20) {cost =baseFare + (costPerMile * milesTraveled)+ nightSurcharge;}
+  else {cost = baseFare + (costPerMile * milesTraveled);}
+  return cost;
+};
+taxiFare(45,5.59);
+//Ojo!! En el if/else metí las ecuaciones completas del “cost” en lugar de
+//{return cost;} o {return cost + nigthSurcharge;}, porque de ésta última
+//manera da error. Gelu.
+AÑADIENDO UNA VARIABLE:
+// use taxiFare to set tripCost to the cost of your 
+// ride covering 5 miles at 2 am in the morning
+var tripCost=taxiFare(5,2); 
+EJERCICIO 2 – PIEDRA, PAPEL Y TIJERA:
+
+var result = "";
+var player = prompt("Pick rock, paper, or scissors.");
+	if(player !== null) {
+		player.toLowerCase();
+	}
+var choices = ["rock","paper","scissors"];
+var computer = choices[Math.floor(Math.random()*3)];
+
+var win = "Your "+player+" beats "+computer+". You win.";
+var lose = "Your "+player+" loses to "+computer+". You lose.";
+var draw = "A draw: "+player+" on "+computer+".";
+
+if(player === "rock"){
+    if(computer === "scissors"){
+        result = win;
+    }
+    else if(computer === "paper"){
+        result = lose;
+    }
+    else if(computer === "rock"){
+        result = draw;
+    }
+}
+else if(player === "paper"){
+    if(computer === "rock"){
+        result = win;
+    }
+    else if(computer === "scissors"){
+        result = lose;
+    }
+    else if(computer === "paper"){
+        result = draw;
+    }
+}
+else if(player === "scissors"){
+    if(computer === "paper"){
+        result = win;
+    }
+    else if(computer === "rock"){
+        result = lose;
+    }
+    else if(computer === "scissors"){
+        result = draw;
+    }
+}
+else if(player === "cancel") {
+	result = "Bye!";
+}
+else {
+	result = "I said rock, paper, or scissors!";
+}
+console.log(result);
+
+ 
+PIEDRA, PAPEL Y TIJERA (ANOTHER VIEW):
+
+var userChoice = prompt("Do you choose rock, paper or scissors?");
+var computerChoice = Math.random();
+if (computerChoice <0.34){
+	computerChoice = "rock";
+} else if(computerChoice <=0.67){
+	computerChoice = "paper";
+}else{
+	computerChoice = "scissors";
+}
+var compare = function(choice1, choice2) {
+			if(choice1 === choice2) {
+				return "The result is a tie!";
+			}
+			if(choice1 === "rock") {
+				if(choice2 === "scissors") {
+					return "rock wins";
+				} else {
+					return "paper wins";
+				}
+			}
+			if(choice1 === "paper") {
+				if(choice2 === "rock") {
+					return "paper wins";
+				} else {
+					return "scissors wins";}
+			}
+			if(choice1 === "scissors") {
+				if(choice2 === "rock") {
+					return "rock wins";
+				} else {
+					return "scissors wins";
+				}
+			}
+};
+compare(userChoice, computerChoice);
+
+
+EJEMPLO 1 – WHILE LOOP
+LOOP INFINITO – NO EJECUTAR:	/*var i = 0;
+while (i === 0) {
+console.log("Hello");
+}*/
+SE SOLUCIONA INCLUYENDO “i++” AL CÓDIGO.
+
+EJEMPLO 1 BIS– “WHILE / DO” LOOP
+var i = 0;
+while (i === 0) {
+  console.log("Hello");
+  i++;
+}
+var i = 0;
+do {
+  console.log("This is iteration " + (i + 1) + ".");
+  i++;
+}
+while(i<4);
+
+EJEMPLO 2 – FUNCTIONS WITH IF/ELSE
+var canIDrive = function (myAge, legalDrivingAge)
+{
+if (myAge >= legalDrivingAge)    {return true;}
+else {return false;}
+};
+var myAge = prompt("How old are you?");
+var legalDrivingAge = 18;
+
+if (myAge >= legalDrivingAge) {
+  console.log("You can legally drive!");
+}else {
+  console.log("You'll have to wait a few more years!");}
+
+EJEMPLO 3 – JUEGO DE DADOS (UN DADO)
+// pick a random number between 1 and 6 for our roll of the die
+var die = Math.floor(Math.random()*6 + 1);
+
+console.log("You rolled a "+die);
+
+EJEMPLO 4 – JUEGO DE DADOS (DOS DADOS)
+// pick a random number between 1 and 6 for our roll of the die
+var die1 = Math.floor(Math.random()*6 + 1);
+var die2 = Math.floor(Math.random()*6 + 1);
+var score;
+if(die1 === 1 || die2 ===1) {score = 0;}
+else {score = die1+die2;}
+
+// this time if either dice roll is 1 then score should be 0
+// Otherwise, score should be the sum of the two dice
+
+console.log("You rolled a "+die1+" and a "+die2+" for a score of "+score);
+
+
+AÑADIENDO UNA NUEVA REGLA  (double store(*))
+
+var die1 = Math.floor(Math.random()*6 + 1);
+var die2 = Math.floor(Math.random()*6 + 1);
+var score;
+
+
+if(die1 === 1 || die2 ===1) {score = 0;}
+  else if(die1 === die2) {score = 2*(die1+die2);}//(*)
+  else {score = die1+die2;}
+ 
+
+console.log("You rolled a "+die1+" and a "+die2+" for a score of "+score);
+
+
+MÁS LOOPS c-ARRAYS. Encuentra tu nombre en un texto.
+/*jshint multistr:true */
+var text = "blah blah blah blah blah blah blah blah blah blah Gelu \
+blah blah blah blah blah blah Gelu blah blah blah blah blah blah \
+blah blah blah blah";
+var myName = "Gelu";
+var hits = [];
+for(var i=0; i<text.length; i++) {
+	if(text[i]==="G") {
+		for(var j=i; j<(myName.length+i); j++) {
+			hits.push(text[j]);
+		}
+	}
+}
+if (hits.length === 0){
+	console.log("Your name wasn't found!");
+} else {
+	console.log(hits);
+}
+
+SLAYING THE DRAGON’S MINIGAME!!
+WHILE & IF/ELSE STATEMENTS
+var slaying = true;
+var youHit = Math.floor(Math.random()*2);
+var damageThisRound = Math.floor(Math.random()*6 + 1);
+var totalDamage = 0;
+while(slaying) {
+    if(youHit===1) {
+		totalDamage += damageThisRound;
+		console.log("petulation congratulation!!");
+		if(totalDamage >= 4) {
+			console.log("muurre!! mutafokka dragga!!");
+			slaying = false;
+		} else {
+			youHit = Math.floor(Math.random()*2);}
+	} else {
+		console.log("ouch!! dragon's teached your ass...");
+		slaying = false;
+	}}
+
+ 
+FachiTroll. Switch Game (pte de arreglar)
+
+var fachiTroll = prompt("alto rojillo!! escoje tu camino!!", "escoge opción: LUCHO, PAGO o CORRO)").toUpperCase();
+switch(fachiTroll) {
+    case "LUCHO":
+		var navaya = prompt("saques el filu?!").toUpperCase();
+		var glayar = prompt("con que Asamblea eh...???").toUpperCase();
+		if(navaya=="YES" && glayar =="NO") {
+			console.log("TU GANES PIN!! les navayes son muncho pa mí");
+		} else {console.log("PERDISTI!!! conmigo nun discute naide!! por mis coyones siempre tengo La Razón...");}
+		break;
+	case "PAGO":
+		var perres = prompt("Ah pagues?? cuánto tráis ahende??(MONEY)").toUpperCase();
+		var perCulu = prompt("aingh!! aclénate ahende que voy date lo too...").toUpperCase();
+		if(perres<10 || perCulu == "YES") {
+			console.log("Aaaahgh!! caro que te gusta ho!! gáchate...!!");
+		} else {console.log("nunca tengo bastante!! y agora voy enculate!!! :()");}
+		break;
+	case "CORRO":
+		var aPata = prompt("nun corras que va a ser peor...!!!!!").toUpperCase();
+		var enAmoto = prompt("ostia!! un amoto??").toUpperCase();
+		if(aPata=="YES" || enAmoto == "NO") {
+			console.log("tas bien jodíu, pin!! a zaca!! zaca zaca zacaaaagh!!");
+		} else {console.log("aaahgggg cabronezu!! ya te pillaré por banda!!!");}
+		break;
+	default;
+			console.log("escoge: LUCHO, PAGO o CORRO, o TE JODO!!!!");
+		break;
+} 
+EJEMPLO 5 – JUEGO DE DADOS (DOS DADOS), MÁS SOFISTICADO:
+
+
+var newArray = [];
+// Here I filled the spots in the newArray with 0s so we can
+// count their occurances in the loops below
+for(i=2; i<=12;i++) {  //e.d.,en una tirada: mín. 2 ptos.-máx.12 ptos
+    newArray[i] = 0;
+}
+// Now increment the array to have the proper probabilities again
+
+for(i = 1; i < 7; i++){
+    for(y = 1; y < 7; y++){
+		newArray[i+y]++;
+  }
+}
+// Here I initialize the set of variables we will need for our game
+// they are score, totalScore, answer, and the two die's die1 and die2
+var score = 0;
+var totalScore = 0;
+var answer = "";
+var die1;
+var die2;
+
+die1 = Math.floor(Math.random()*6 + 1);
+die2 = Math.floor(Math.random()*6 + 1);
+    
+if(die1===die2){
+	score = 0;
+
+totalScore += score;
+
+} else if(die1+die2===4) {
+	score = 50;
+} else if(die1+die2===10) {
+	score = 100;
+} else {
+	score = (10 - newArray[die1+die2])*10;
+}
+console.log("You rolled a: "+die1+" and a: "+die2+" for a roll of: "+(die1+die2));
+
+console.log("You got a score of: "+score+" . Your total score is: "+totalScore);
+
+answer = prompt("Do you want to keep playing (y/n)");
+
+PENDIENTE DE ARREGLAR AGREGANDO UN WHILE LOOP… 
+EJEMPLO 6 – BLACKJACK (juego de cartas guiri)
+
+// Our deal function will return a random card
+var deal = function() {
+  card = Math.floor(Math.random()*52+1);
+  return card;
+};
+
+// Deal out our first hand
+var card1 = deal();
+var card2 = deal();
+
+// This function takes a card as a parameter and returns the value
+// of that card
+var getValue = function(card) {
+  // if its a face card, number should be set to 10        
+    if(card%13===0 || card%13>10)
+    {return 10;}
+  // What if it's an ace?
+		else if(card%13===1)
+		{return 11;}
+  // Otherwise, we just want its number value
+  else {return card%13;}
+};
+        
+// Score the hand
+function score() {
+  return getValue(card1) + getValue(card2);
+}
+
+console.log("You have cards " + card1 + " and " + card2 +
+        " for a score of " + score(card1, card2));
+
+
+ 
+EJEMPLO: COMBINADOR DE BONOLOTOS ( EN PRUEBAS)
+
+var bonoLoto1 = Math.floor(Math.random()*49+1);
+var bonoLoto2 = Math.floor(Math.random()*49+1);
+var bonoLoto3 = Math.floor(Math.random()*49+1);
+var bonoLoto4 = Math.floor(Math.random()*49+1);
+var bonoLoto5 = Math.floor(Math.random()*49+1);
+var bonoLoto6 = Math.floor(Math.random()*49+1);
+
+var combinator = function()
+{ 
+return [bonoLoto1, bonoLoto2, bonoLoto3, bonoLoto4, bonoLoto5, bonoLoto6];
+   
+   if(return[i])
+
+   };
+
+combinator();
+
+hay una movida para ordenar arrays “sort“ pero hay que diseñar antes un objeto y un método….
+------------------------------
+otra posibilidad:
+var bonoLoto = function ()
+{
+ var combinator1 = Math.floor(Math.random()*49+1);
+ var combinator2 = Math.floor(Math.random()*49+1);
+ var combinator3 = Math.floor(Math.random()*49+1);
+ var combinator4 = Math.floor(Math.random()*49+1);
+ var combinator5 = Math.floor(Math.random()*49+1);
+ var combinator6 = Math.floor(Math.random()*49+1);
+ 
+ console.log (combinator1 !== combinator2 !== combinator3 !== combinator4 !== combinator5 !== combinator6);
+ 
+ return [combinator1, combinator2, combinator3, combinator4, combinator5, combinator6];
+ 
+ 
+};
+
+bonoLoto(); 
+EJEMPLO 7 “SWITCH CONDITIONAL” – CÁLCULO DE COSTES f(localización)
+
+var calculateTotalCosts = function(salary,numWorkers,city)
+	{
+		fixedCosts = 5000;
+		variableCosts = salary*numWorkers;
+		switch(city)
+		{
+			case "BEJ":
+				rent = 25000;
+				break;
+			case "NYC":
+				rent = 30000;
+				break;
+			default:
+				rent = 10000;
+				break;
+		}
+		return rent + variableCosts + fixedCosts;
+	};
+  
+console.log(calculateTotalCosts(50000, 9, "NYC"));
+console.log(calculateTotalCosts(50000, 9, "BEJ"));
+console.log(calculateTotalCosts(50000, 9, "MUM"));
+
+
+OBJETO predefinido ”Math”. Propiedades:
+
+   min',
+  'floor',
+  'PI',	
+  'LOG10E',
+  'LOG2E',
+  'abs',
+  'pow',
+  'acos',
+  'max',
+  'atan2',
+  'SQRT1_2',
+  'asin',
+  'exp',
+  'LN10',
+  'log',
+  'E',
+  'sqrt',
+  'atan',
+  'LN2',
+  'round',
+  'cos',
+  'SQRT2',
+  'tan',
+  'random',
+  'ceil',
+  'sin
+
+
+Curso de OBJETOS. “pregunta a un robot si “n” es PRIMO o  no”:
+
+
+function Robot(name){
+    this.name = name;
+}
+var n; //la previa introducción de "n" era vital... Gelu.
+var Data = new Robot("Data");
+var Lore = new Robot("Lore");
+var isPrime = true;
+
+Robot.prototype.primeTime = function(n){
+    for (var i = 2; i <= Math.sqrt(n) && isPrime; i++)
+        if(n%i === 0){
+            isPrime = false;
+        } else {
+	isPrime = true;
+        }
+    }; 
+   if(isPrime) {console.log(n + " is prime!");}
+   else {console.log(n + " is not prime.");}
+
+Data.primeTime(23);
+
+//ya llegaremos al tema "OBJETOS". Gelu.
+
+OBJETOS (Programación Orientada a Objetos...). Notaciones:
+
+// help us make snoopy using literal notation
+// Remember snoopy is a "beagle" and is 10 years old.
+var snoopy = {
+	species: "beagle",
+	age: 10};
+using constructor notation:
+
+var snoopy = new Object();
+snoopy.species = “beagle”;
+snoopy.age = 10;
+
+MÉTODOS (METHODS)
+
+// here we define our method using "this", before we even introduce bob
+var setAge = function (newAge) {
+  this.age = newAge;
+};
+// now we make bob
+var bob = new Object();
+bob.age = 30;
+// and down here we just use the method we already made
+bob.setAge = setAge;
+  
+// change bob's age to 50 here
+bob.setAge(50);
+
+CÁLCULO DE PERÍMETRO Y ÁREA DE UN CUADRADO
+
+var square = new Object();
+square.sideLength = 6;
+
+square.calcPerimeter = function() {
+  return this.sideLength * 4;
+};
+// help us define an area method here
+square.calcArea = function() {
+	return this.sideLength*this.sideLength;	
+};
+var p = square.calcPerimeter();
+var a = square.calcArea();
+
+CASO de creación de OBJECTS a partir de un METHOD
+var setName = function(yourName){
+    this.name = "Your name is " + yourName;
+};
+var human = {
+    setHumanName: setName
+};
+var animal = {
+    setAnimalName: setName
+};
+
+
+human.setHumanName("joey the butcher");
+animal.setAnimalName("tito the dog");
+
+console.log(human.name);
+console.log(animal.name);
+
+
+
+OBJECT CONSTRUCTORs: “CLASSES (spoiler)”
+
+Con la notación “constructor” clásica:
+
+var bob = new Object();
+bob.name = "Bob Smith";
+bob.age = 20;	 
+
+Utilizando un “Object -Person- Constructor” u “Object-Class Constructor”:
+
+function Person(name,age) {
+  this.name = name;
+  this.age = age;
+}
+var bob = new Person("Bob Smith", 30);
+…
+var susan = new Person("Susan Jordan", 25);
+var george = new Person("George Washington", 275); 
+
+
+Otro EJEMPLO:
+
+function Person(name,age) {
+  this.name = name;
+  this.age = age;
+  this.species = "Homo Sapiens";
+}
+var sally = new Person ("Sally Bowles", 39);
+var holden = new Person ("Holden Caulfield", 16);
+console.log("sally's species is " + sally.species + " and she is " + sally.age);
+console.log("holden's species is " + holden.species + " and he is " + holden.age); 
+
+
+OBJECT CONSTRUCTOR w/FUNCTIONS (w/Methods)
+
+function Rectangle(length, width) {
+  this.length = length;
+  this.width = width;
+  this.calcArea = function() {
+      return this.length * this.width;
+  };
+  // put our perimeter function here!
+  this.calcPerimeter = function() {
+  	return this.length*2+this.width*2;
+  };
+}
+var rex = new Rectangle(7,3);
+var area = rex.calcArea();
+var perimeter = rex.calcPerimeter(); 
+
+
+ 
+OBJECT CONSTRUCTOR w/Methods
+
+function Bike(color, numGears) {
+    this.color = color;
+    this.numGears = numGears;
+    this.numWheels = 2;
+    
+    this.ride = function() {
+        console.log("I'm riding!");    
+};
+    this.paintRed = function() {
+        this.color = "red";
+    };
+}
+var myBike = new Bike("Blue", 6);
+myBike.ride();
+myBike.paintRed();
+	//interesante ver cómo ejecutando los dos métodos cambio las prop.
+	//de un objeto. Gelu.
+console.log(myBike.color);
+
+COMANDOS “indexOf” y “replace” (ejemplo)
+
+var str = "I'm one cool string.";
+str.indexOf("cool");
+// your code here!
+var uncoolStr = str.replace("cool", "boring");
+console.log(uncoolStr); 
+PROTOTYPE keyword in METOHDS
+// recreate your Candy class here
+function Candy(name) {
+	this.name = name;
+}
+// extend the prototype of Candy with a "printName" method
+Candy.prototype.printName = function() {
+	console.log(this.name);
+};
+// testing code for your method
+var chocolate = new Candy("chocolate");
+chocolate.printName();
+
+var gummyBears = new Candy("gummy bears");
+gummyBears.printName();
+
+INHERITANCE btwCLASSES & OBJECTS
+	// we set up a base class
+function Candy() {
+    this.sweet = true;
+}
+	// create a "Chocolate" class with a "type" argument
+function Chocolate(type) {
+	this.type = type;
+}
+	// say that Chocolate inherits from Candy
+Chocolate.prototype = new Candy();
+
+	// create a "choc" object using the Chocolate constructor 
+	// that has a "type" of "milk"
+var choc = new Chocolate("milk");
+	// print the sweet and type properties of choc
+console.log(choc.sweet);
+console.log(choc.type);
+
+OBJECT w/LOOP & ARRAY
+
+// Our Person constructor
+function Person (name, age) {
+this.name = name;
+this.age = age;
+}
+// Now we can make an array of people
+var family = new Array();
+family [0] = new Person ("alice", 40);
+family [1] = new Person ("bob", 42);
+family [2] = new Person ("michelle", 8);
+family [3] = new Person ("timmy", 6);
+// loop through our new array
+
+for (i = 0; i < family.length; i++) { 
+
+console.log(family[i].name,family[i].age);}
+
+
+
+EJEMPLO-REPASO OBJECTS/ARRAYS
+
+Sacar datos de una lista
+
+var bob = {
+  firstName: "Bob",
+	lastName: "Jones",
+	phoneNumber: "(650) 777 - 7777",
+	email: "bob.jones@example.com"
+};
+
+var mary = {
+	firstname: "Mary",
+	lastname: "Johnson",
+	phoneNumber: "(605) 888 - 8888",
+	email: "mary.johnson@example.com"
+};
+
+var contacts = [bob, mary];
+
+console.log(contacts[1].phoneNumber);
+
+Generar un listado
+
+var bob = {
+    firstName: "Bob",
+    lastName: "Jones",
+    phoneNumber: "(650) 777 - 7777",
+    email: "bob.jones@example.com"
+};
+var mary = {
+    firstName: "Mary",
+    lastName: "Johnson",
+    phoneNumber: "(650) 888 - 8888",
+    email: "mary.johnson@example.com"
+};
+var contacts = [bob, mary];
+
+function printPerson (person) { 
+
+console.log(person.firstName + " " + person.lastName);
+}
+var list = function(){ 
+
+for (i=0; i < contacts.length; i++){
+printPerson(contacts[i]); 
+}
+};
+list();
+
+Y OTRO EJEMPLO. En este caso una función de búsqueda “search”.
+OJO CÓMO DEFINO EL LOOP ESTA VEZ:
+
+var bob = {
+    firstName: "Bob",
+    lastName: "Jones",
+    
+    phoneNumber: "(650) 777 - 7777",
+    email: "bob.jones@example.com"
+};
+var mary = {
+    firstName: "Mary",
+    lastName: "Johnson",
+    
+    phoneNumber: "(650) 888 - 8888",
+    email: "mary.johnson@example.com"
+};
+var contacts = new Array(bob, mary);
+
+function printPerson (person) {
+    console.log(person.firstName + " " + person.lastName);
+}
+function list(){
+	var length = contacts.length;
+	var i;
+	for(i=0;i<length;i++){
+		printPerson(contacts[i]);
+	}//en el ejercicio anterior definí "list" de otra manera, y funcionó. Gelu.
+}//y por qué no hay aquí un ";" ?????????????????
+
+/*Create a search function
+then call it passing "Jones"*/
+var search = function(lastName){
+	var length = contacts.length;
+	var i;
+	for(i=0;i<length;i++){
+		if(contacts[i].lastName===lastName){
+		printPerson(contacts[i]);}
+	}
+	};
+search("Jones");
+
+
+Y SEGUIMOS COL DOLOR DE CABEZA. Este aún precisa solución:
+
+var bob = {
+    firstName: "Bob",
+    lastName: "Jones",
+    
+    phoneNumber: "(650) 777 - 7777",
+    email: "bob.jones@example.com"
+};
+
+var mary = {
+    firstName: "Mary",
+    lastName: "Johnson",
+    
+    phoneNumber: "(650) 888 - 8888",
+    email: "mary.johnson@example.com"
+};
+
+var contacts = new Array(bob, mary);
+
+function printPerson (person) {
+    console.log(person.firstName + " " + person.lastName);
+}
+
+function list(){
+    var length = contacts.length;
+    var i;
+    for(i=0;i<length;i++){
+		printPerson(contacts[i]);
+	}
+}
+/*Create a search function
+then call it passing "Jones"*/
+var search = function(lastName){
+	var length = contacts.length;
+	var i;
+	for(i=0;i<length;i++){
+		if(contacts[i].lastName===lastName){
+		printPerson(contacts[i]);}
+	}
+	};
+//esto hay que arreglalo. GELU.
+contacts[contacts.length] = new Object (firstName, lastName, email, telephone);
+var firstName = prompt("what's your firstname?");
+var lastName = prompt("what's your lastname?");
+var email = prompt("what's your email?");
+var telephone = prompt("what's your telephone?");
+
+var add = function(firstName, lastName, email, telephone) {
+};
+
+add(prompt("what's your firstname?"), prompt("what's your lastname?"), prompt("what's your email?"), prompt("what's your telephone?"));
+list();
+
+CÁLCULO DEL CRONO MEDIO DE UN ATLETA:
+
+var raceTimes = [12.2,11.8,12.5,10.9,11.1];
+var totalTime = 0;
+for ( i = 0; i < raceTimes.length; i++ ) {
+  totalTime = totalTime + raceTimes[i];
+}
+var averageTime = totalTime/raceTimes.length;
+averageTime;
+
+
+PARA VARIOS ATLETAS:
+
+// runner times// cálculo del tiempo total
+var carlos = [9.6,10.6,11.2,10.3,11.5];
+var liu = [10.6,11.2,9.4,12.3,10.1];
+var timothy = [12.2,11.8,12.5,10.9,11.1];
+
+// declare your function calculateTotal here
+var calculateTotal = function(raceTimes){
+var totalTime=0;
+for(var i = 0; i<raceTimes.length; i++){
+    totalTime = totalTime + raceTimes[i];
+}
+return totalTime;
+};
+
+var carlosTotal = calculateTotal(carlos);
+var liuTotal = calculateTotal(liu);
+var timothyTotal = calculateTotal(timothy);
+
+console.log(carlosTotal);
+console.log(liuTotal);
+console.log(timothyTotal);
+
+
+CÁLCULO DE LAS MEDIAS
+
+// runner times
+var carlos = [9.6,10.6,11.2,10.3,11.5];
+var sarah = [10.6,11.2,9.4,12.3,10.1];
+var timothy = [12.2,11.8,12.5,10.9,11.1];
+
+var calculateAverage = function (raceTimes) {
+  var totalTime;
+  for ( i = 0; i < raceTimes.length; i++ ) {
+    totalTime = (totalTime || 0) + raceTimes[i];
+  }
+// assign variable averageTime
+    var averageTime = totalTime/raceTimes.length;
+  return averageTime;
+};
+// write the result of your function call console.log()
+console.log(calculateAverage(timothy));/*si en el argumento pongo
+"raceTimes" me saca la media de Timothy. en fin. Gelu.*/
+
+CÁLCULO DE LAS MEDIAS Y TIEMPOS DE CLASIFICACIÓN
+Ejercicio completo.
+// Runner times
+var carlos = [9.6,10.6,11.2,10.3,11.5];
+var liu = [10.6,11.2,9.4,12.3,10.1];
+var timothy = [12.2,11.8,12.5,10.9,11.1];
+// Define the function calculateAverage
+var calculateAverage = function(raceTimes){
+	var totalTime;
+  for ( i = 0; i < raceTimes.length; i++ ) {
+    totalTime = (totalTime || 0) + raceTimes[i];
+  }
+// assign variable averageTime
+    var averageTime = totalTime/raceTimes.length;
+  return averageTime;
+};
+var isQualified = function (runner) {
+ 	 // Assign the variable averageTime
+    var averageTime = calculateAverage(runner);
+  if ( averageTime >= 11.5 ) { 
+   	 // Times greater than or equal to 11.5 are too slow
+	console.log("Close, but you didn't make the cut.");
+  } else if ( averageTime < 11.5 ) {
+	// An average time of less than 11.5 can join the team
+	console.log("Welcome to the team, speedy!");}
+};
+// Call the function isQualified on liu and timothy
+isQualified(liu);
+isQualified(timothy);
+
+
+FOR-IN LOOP wOBJECTS’S PROPERTIES
+IMPRIMIR los nombres de LAS PROPIEDADES DEL OBJETO:
+var nyc = {
+    fullName: "New York City",
+    mayor: "Michael Bloomberg",
+    population: 8000000,
+    boroughs: 5
+};
+// write your for-in loop here
+for(var property in nyc) {
+	console.log(property);
+}
+IMPRIMIR LAS PROPIEDADES DEL OBJETO:
+var nyc = {
+    fullName: "New York City",
+    mayor: "Michael Bloomberg",
+    population: 8000000,
+    boroughs: 5
+};
+// write a for-in loop to print the value of nyc's properties
+for(var property in nyc) {
+	console.log(nyc [property]);
+}
+ 
+- Keyword “typeof ”
+
+// complete these definitions so that they will have
+// the appropriate types
+var anObj = { job: "I'm an object!" };
+var aNumber = 42;
+var aString = "I'm a string!";
+
+console.log(typeof anObj); // should print "object"
+console.log(typeof aNumber); // should print "number"
+console.log(typeof aString); // should print "string"
+/*RECORD.: si obviara "typeof" en el arg de console.log, imprimiría
+la propiedad, el valor o la palabra del objeto, variable o "string"
+respectivamente. "typeof" imprime la descripción de lo que tenemos
+entre manos. Gelu.*/
+
+
+- Keyword “var.hasOwnProperty('property')”
+
+var suitcase = {
+    shirt: "Hawaiian"
+};
+if (suitcase.hasOwnProperty('shorts')){ //if 'shorts' variable exists,
+    console.log(suitcase.shorts);          //show me its value.
+}else{suitcase.shorts="none";   /*create 'shorts' variable & set its value to "none"*/
+    console.log(suitcase.shorts); //THEN show me the value of shorts!
+}
+
+
+SPOILER (CLASSES, OBJECTS)
+
+// what is this "Object.prototype" anyway...?
+var prototypeType = typeof Object.prototype;
+console.log(prototypeType);
+
+// now let's examine it!
+var hasOwn = Object.prototype.hasOwnProperty("hasOwnProperty");
+console.log(hasOwn); 
+MENUDA MILONGA….. 
+PROGRAMACIÓN ORIENTADA A OBJETOS (OOP)
+
+CLASSES.
+//ejemplo de constructor ”Person” y de cómo se agregan OBJETOS y PROPIEDADES
+function Person(name,age) {
+  this.name = name;
+  this.age = age;}
+// a function that prints the name of any given person
+function printPersonName(p) {
+  console.log(p.name);}
+var bob = new Person("Bob Smith", 30);
+printPersonName(bob);
+// make a person called me with your name and age
+var me = new Person ("Gelu", 37);
+printPersonName(gelu);
+
+//Keyword “prototype”, ejemplo de cómo funciona como propiedad agregada
+A)
+function Dog (breed) {
+  this.breed = breed;
+this.bark = function() {
+    console.log("Woof!");
+};}
+var buddy = new Dog("Golden Retriever");
+buddy.bark();
+var snoopy = new Dog("Beagle");
+snoopy.bark();
+B)
+function Dog (breed) {
+  this.breed = breed;
+Dog.prototype.bark = function() {
+  console.log("Woof");
+};}
+var buddy = new Dog("Golden Retriever");
+buddy.bark();
+var snoopy = new Dog("Beagle");
+snoopy.bark();
+
+//ASIGNAR A UNA CLASE LAS PROPIEDADES DE OTRA:
+// the original Animal class and sayName method
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+}
+Animal.prototype.sayName = function() {
+    console.log("Hi my name is "+this.name);
+};
+// define a Penguin class
+function Penguin(name) {
+	this.name = name;
+	this.numLegs = 2;
+}
+// set its prototype to be a new instance of Animal
+Penguin.prototype = new Animal();
+
+
+//ASIGNAR A UNA CLASE (2) LAS PROPIEDADES DE OTRA (1), creando un nuevo objeto de (2) que HEREDA los “methods” de (1):
+// the original Animal class and sayName method
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;}
+Animal.prototype.sayName = function() {
+    console.log("Hi my name is "+this.name);};
+// define a Penguin class
+function Penguin(name) {
+	this.name = name;
+	this.numLegs = 2;}
+// set its prototype to be a new instance of Animal
+Penguin.prototype = new Animal();
+var penguin = new Penguin ("madagascar");
+penguin.sayName();
+
+//OTRO EJEMPLO: objeto de CLASS(2) que HEREDA los “methods” de CLASS(1), sin haber introducido todas las propiedades de la (1):
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;}
+// create your Emperor class here and make it inherit from Penguin
+function Emperor (name) {
+	this.name = name;}
+Emperor.prototype = new Penguin(name);
+// create an "emperor" object and print the number of legs it has
+var emperor = new Emperor("madagascarín");
+console.log(emperor.numLegs);
+
+//PROTOTYPE CHAIN.  (fijarse en los “consoles”…)
+// original classes
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+    this.isAlive = true;}
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;}
+function Emperor(name) {
+    this.name = name;
+    this.saying = "Waddle waddle";}
+// set up the prototype chain
+Penguin.prototype = new Animal();
+Emperor.prototype = new Penguin();
+
+var myEmperor = new Emperor("Jules");
+
+console.log(myEmperor.saying); // should print "Waddle waddle"
+console.log(myEmperor.numLegs); // should print 2
+console.log(myEmperor.isAlive); // should print true
+
+
+
+
+VARIABLES PRIVADAS. (Cómo hacerlas “públicas”)
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   this.bankBalance = bankBalance;/*He creado esta prop. por mi cuenta
+   para comprobar lo que se imprime según ubique la var bankBalance
+   dentro o fuera del constructor. Gelu.*/
+   var bankBalance = 7500;
+}
+
+// create your Person 
+var john = new Person("John", "Bonyovi", 98);
+
+// try to print his bankBalance
+console.log(john.bankBalance);
+
+ACCESO A VARIABLES “PRIVADAS”.
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   this.getBalance = function() {
+     	 // your code should return the bankBalance
+      return bankBalance;
+   };
+}
+var john = new Person('John','Smith',30);
+console.log(john.bankBalance);
+
+// create a new variable myBalance that calls getBalance()
+var myBalance = john.getBalance();
+console.log(myBalance);
+
+MÉTODOS PRIVADOS. (CÓMO SACAR DATOS DE ELLOS)
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   var returnBalance = function() {
+      return bankBalance;
+   };
+   	// create the new function here
+   this.askTeller = function() {
+      return returnBalance;
+   };
+}
+var john = new Person('John','Smith',30);
+console.log(john.returnBalance);
+var myBalanceMethod = john.askTeller();
+var myBalance = myBalanceMethod();
+console.log(myBalance);
+
+MÉTODO PRIVADO. SACAR DATOS C-CONTRASEÑA
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   this.askTeller = function(pass) {
+     if (pass == 1234) return bankBalance;
+     else return "Wrong password.";
+   };
+}
+var john = new Person('John','Smith',30);
+/* the variable myBalance should access askTeller()
+   	with a password as an argument  */
+var myBalance = john.askTeller(1234);
+
+IMPRIMIR SÓLO PARTE DE LAS PROPIEDADES DEL CONSTRUCTOR
+var languages = {
+    english: "Hello!",
+    french: "Bonjour!",
+    notALanguage: 4,
+    spanish: "Hola!"
+};
+// print hello in the 3 different languages
+for(var sayHello in languages) {
+	if(typeof languages[sayHello] === "string") {
+	console.log(languages[sayHello]);
+	}
+}
+
+DOS FORMAS DE INSERTAR UN “public METHOD” EN UNA “CLASS”
+SEGÚN CODECADEMY:
+function Dog (breed) {
+    this.breed = breed;}
+// add the sayHello method to the Dog class 
+// so all dogs now can say hello
+	Dog.prototype.sayHello = function() {
+	console.log("Hello this is a " + this.breed + " dog");};
+var yourDog = new Dog("golden retriever");
+yourDog.sayHello();
+var myDog = new Dog("dachshund");
+myDog.sayHello(); 
+A MI MANERA:
+function Dog (breed) {
+    this.breed = breed;
+    this.sayHello = function() {
+	console.log("Hello this is a " + breed + " dog");};}
+// add the sayHello method to the Dog class 
+// so all dogs now can say hello
+var yourDog = new Dog("golden retriever");
+yourDog.sayHello();
+var myDog = new Dog("dachshund");
+myDog.sayHello(); 
+
+
+EJERCICIO PRÁCTICO. CASH REGISTER.
+EJEMPLO SIMPLE:
+var cashRegister = {
+    total:0,
+    add: function(itemCost){
+        this.total += itemCost;
+// "+=" es como decir: this.total = this.total + itemCost
+    }
+};
+//call the add method for our items
+cashRegister.add(0.98);
+cashRegister.add(1.23);
+cashRegister.add(4.99);
+cashRegister.add(0.45);
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+EJEMPLO CON SCANNER:
+var cashRegister = {
+    total:0,
+    add: function(itemCost){
+        this.total += itemCost;
+    },
+    scan: function(item, quantity) 
+    {
+        switch (item) {
+        case "eggs": this.add(0.98*quantity); break;
+        case "milk": this.add(1.23*quantity); break;
+        case "magazine": this.add(4.99*quantity); break;
+        case "chocolate": this.add(0.45*quantity); break;
+        }
+    }
+};
+// scan each item 4 times
+cashRegister.scan("eggs", 4);
+cashRegister.scan("milk", 4);
+cashRegister.scan("magazine", 4);
+cashRegister.scan("chocolate", 4);
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+ 
+EJEMPLO c-SCANNER Y POSIBILIDAD DE CONSULTA Y CORRECCIÓN
+var cashRegister = {
+    total:0,
+    lastTransactionAmount:0,
+   	//Dont forget to add your property
+    add: function(itemCost) {
+        this.total +=  itemCost;
+        this.lastTransactionAmount = itemCost;
+    },
+    scan: function(item,quantity) {
+        switch (item) {
+        case "eggs": this.add(0.98 * quantity); break;
+        case "milk": this.add(1.23 * quantity); break;
+        case "magazine": this.add(4.99 * quantity); break;
+        case "chocolate": this.add(0.45 * quantity); break;
+        }
+        return true;
+    },
+   	//Add the voidLastTransaction Method here
+    voidLastTransaction: function() {
+		return this.total -= this.lastTransactionAmount;
+    }    
+};
+cashRegister.scan('eggs',1);
+cashRegister.scan('milk',1);
+cashRegister.scan('magazine',1);
+cashRegister.scan('chocolate',4);
+//Void the last transaction and then add 3 instead
+cashRegister.voidLastTransaction();
+cashRegister.scan('chocolate',3);
+//Show the total bill
+console.log('Your bill is '+cashRegister.total);
+
+
+ 
+EJEMPLO c-SCANNER, CONSULTA,CORRECCIÓN Y DESCUENTOS
+
+function StaffMember(name,discountPercent){
+    this.name = name;
+    this.discountPercent = discountPercent;
+}
+
+var sally = new StaffMember("Sally",5);
+var bob = new StaffMember("Bob",10);
+
+// Create yourself again as 'me' with a staff discount of 20%
+var me = new StaffMember("me",20);
+
+var cashRegister = {
+    total:0,
+    lastTransactionAmount: 0,
+    add: function(itemCost){
+        this.total += (itemCost || 0);
+        this.lastTransactionAmount = itemCost;
+    },
+    scan: function(item,quantity){
+        switch (item){
+        case "eggs": this.add(0.98 * quantity); break;
+        case "milk": this.add(1.23 * quantity); break;
+        case "magazine": this.add(4.99 * quantity); break;
+        case "chocolate": this.add(0.45 * quantity); break;
+        }
+        return true;
+    },
+    voidLastTranscation : function(){
+        this.total -= this.lastTransactionAmount;
+        this.lastTransactionAmount = 0;
+    },
+   	 // Create a new method applyStaffDiscount here
+    applyStaffDiscount: function(employee){
+        this.total -= (this.total * (employee.discountPercent/100));
+    }    
+};
+cashRegister.scan('eggs',1);
+cashRegister.scan('milk',1);
+cashRegister.scan('magazine',3);
+// Apply your staff discount by passing the 'me' object 
+// to applyStaffDiscount
+cashRegister.applyStaffDiscount(me);
+
+// Show the total bill
+console.log('Your bill is '+cashRegister.total.toFixed(2));
+
+
+ 
+LOOPING THROUGH OBJECTS.
+var person = {
+    name: "Morgan Jones",
+    telephone: "(650) 777 - 7777",
+    email: "morgan.jones@example.com"
+};
+
+for (var propertyName in person) {
+    console.log(propertyName + ": " + person[propertyName]); //(*)
+}
+/* (*) Forum: You need to use the bracket notation in this case
+because there could be an instance where you really wanted to access
+a property called propertyName. Bracket notation forces the variable
+to interpret as the stored value. pues bueno... Gelu*/
+
+NESTING “FOR” LOOPS. (imprime 1-5, 3 veces)
+var i;
+var j;
+for(i=1; i<=3; i++) {
+    for(j=1; j<=5; j++)
+    {
+        console.log (j);
+    }}
+
+PRINTING OUT TABLES. Matriz de datos:
+var table = [
+    ["Person",  "Age",  "City"],
+    ["Sue",     22,     "San Francisco"],
+    ["Joe",     45,     "Halifax"]
+];
+var rows = table.length;
+var r;
+for(r=0; r<=2; r++) {
+	var c;
+	var cells = table[r].length;
+	var rowText= "";
+	for(c=0; c<=cells-1; c++) {
+		rowText += table[r][c];
+        if (c < (cells - 1) ) {
+        rowText += "  ";
+		}
+	}
+	console.log(rowText);
+}
+
+ 
+RECURSION
+
+function factorial(n) {
+  if(n<0) {
+		console.log("NORMAL-MAN!!! THIS IS NOT A VALID VALUE!!");
+		return;//termination conditions
+  }
+  if(n===0) {
+		return 1;//base case
+  }
+  return n* factorial(n-1);//recursive case
+}
+factorial(6);
+
+
+RECURSION I. Counting Up with Recursion.
+function countUp(current) {
+    	// Recursive case…………………
+    if (current < 5) {
+        console.log(current);      
+        	// We're continuing the loop by calling countUp and passing
+        	// information about which step we're on through the argument.
+        	// The `current + 1` is like the `i++` code in a `for` loop.
+        countUp(current + 1);
+    }
+    	// Base case……………………………
+    if (current === 5){
+        console.log(current);
+        	// This is the last step. We stop the loop by *not* calling 
+        	// `countUp` from here.
+    }
+}
+// We start the loop by calling the function.
+countUp(1);
+
+
+RECURSION II. Counting Down with Recursion.
+function countDown(current) {
+
+    if (current > 1) {
+        console.log(current);      
+
+        countDown(current - 1);
+    }
+
+    if (current === 1){
+        console.log(current);
+    }
+}
+countDown(5);			 con el FOR LOOP:
+function countUp(current) {
+    // Recursive case
+    for(i=5; i>=1; i--) {console.log(i); }} countUp();
+
+RECURSION III. EJEMPLO “SUBSTRING”-vertical
+function substring(all,start,end){
+		if(start>=end) {
+			console.log(all[start]);
+		} else {console.log(all[start]);
+			substring(all, start + 1, end);
+		}}
+substring("lorem ipsum dolor", 6, 10);
+
+RECURSION III BIS. EJEMPLO “SUBSTRING”-horizontal
+function substring(all,start,end){
+		if(start>=end) {
+			return all[start];
+		} else {return all[start] + substring(all, start + 1, end);
+		}}
+console.log(substring("lorem ipsum dolor", 6, 10));
+
+DIFERENCIAS ENTRE FUNCIÓN RECURSIVA Y FUCIÓN CON LOOP
+
+function loopFactorial(n) {
+  var result = n;
+  while (n > 1) {
+    result = result * (n-1);
+    n--;
+  }
+  return result;
+}
+function recursiveFactorial(n) {
+  if (n < 0) {
+    return console.log("Must be a positive integer.");
+  }
+  else if (n === 0) {
+    return 1;
+  }
+  return n * recursiveFactorial(n - 1);
+}
+var loopResult = loopFactorial(10);
+var recursiveResult = recursiveFactorial(10);
+console.log("The loop function returned: " + loopResult);
+console.log("The recursive function returned: " + recursiveResult);
+
+CUENTA ATRÁS
+// 1. Create an empty array called "stack"
+var stack = [];
+// 2. Define the function countDown(int) 
+function countDown(int) {
+	stack.push(int);
+	if(int===1) {
+		return 1;
+	}
+	countDown(int-1);
+}
+// 3. Call countDown() on an integer
+countDown(6);
+// And now let's have a look at that stack:
+console.log(stack); 
+RECURSION. GUESS A NUMBER GAME
+MI VERSIÓN:
+function guessNumber(number) {
+    // Prompt the user for a number
+guess = prompt("Guess a number between 1 and 100");
+    // Convert their guess to a number using +
+guess = +guess;
+    // Define base case
+if (guess===number) {
+console.log("You got it! The number was " + number);
+    }
+    // Define recursive case with a function call
+else if (guess<number){
+console.log("Your number is too low!");
+guessNumber(number);
+    }
+else if (guess>number){
+console.log("Your number is too high!");
+guessNumber(number);
+    }
+}
+    // Call the function guessNumber() with an integer for an argument
+guessNumber(4);
+
+OTRA CON LOOP:
+function guessNumber(number, clue) {
+  	// Prompt the user for a number using the string value of clue
+  guess = prompt(clue);
+// Convert their guess to a number using +
+  guess = +guess;
+  
+  while (guess !== number) {
+    if (guess < number) {
+      guess = prompt("Too low. Guess again.");
+    }
+    else if (guess > number) {
+      guess = prompt("Too high. Guess again.");
+    }
+    guess = +guess;
+  }  
+  console.log("You got it! The number was " + number);
+}
+guessNumber(50,"Pick a number between 1 and 100");
+
+
+VERSIÓN SUPER-PRO….al loro…:
+function guessNumber(number) {
+    // Prompt the user for a number
+  guess = prompt("Guess a number between 1 and 100");
+    
+    // Convert their guess to a number using +
+  guess = +guess;
+    // Define base case
+  if (guess===number) {
+	return console.log("You got it! The number was " + number);
+  }
+    // Define recursive case with a function call
+  else if(guess<=0 || guess > 100) {
+	console.log("this is not an option!!");
+	guessNumber(number);
+  } else {
+	var high_low = guess > number ? "higher" : "lower";
+	console.log("Your guess: "+guess+" is "+high_low+"! Try again!");
+    guessNumber(number);
+  }
+}
+    // Call the function guessNumber() with an integer for an argument
+guessNumber(50);
+
+MAKING ROBOTS
+function makeRobots(robotsNeeded){
+  	// Do we need any robots?
+  if(robotsNeeded>0){
+      
+   	 // We do?  Well lets make one
+    console.log("Robot "+ robotsNeeded+" Created");
+    
+    	// Removes 1 from robots Needed
+    	// Also the same as saying robotsNeeded = robotsNeeded -1
+    robotsNeeded--;
+    
+    	// Calls makeRobots with the new number of robots needed
+    makeRobots(robotsNeeded);
+  }
+}
+makeRobots(2);
+
+EVEN OR ODD
+function evenOrOdd(total){
+  if(total>=0){
+    if(total%2===0){
+		console.log("The number " + total + " is even");
+	}else{
+		console.log("The number " + total + " is odd");
+	}
+	// remove from total
+	total--;
+	// recursively call the function
+	evenOrOdd(total);
+  }
+}
+evenOrOdd(6);
+
+DEALING CARDS (buena idea para el Bonolotter)
+var miniDeck = new Array("ace","king","queen","jack",10,9,8,7,6,5,4,3,2);
+
+function deal(numberOfCards){ 
+
+// If number of cards is greater than 0
+if(numberOfCards > 0){
+// store random number between 0 
+// and the total number of cards in the miniDeck
+length = miniDeck.length;
+cardIndex = Math.floor(Math.random()*length);
+// output card selected
+console.log("Your card is " + miniDeck[cardIndex]);
+// remove selected card from deck
+miniDeck.splice(cardIndex, 1);
+// remove from numberOfCards
+// recursively call the function
+return deal(numberOfCards - 1);
+}
+}
+// Call the function and pass the number of cards you want to deal
+deal(5);
+
+GO FISH
+var cards = new Array("ace","king","queen","jack",10,9,8,7,6,5,4,3,2); 
+
+var hand = [];
+
+function dealHand(numberOfCards){ 
+//if numberOfCards is greater than zero
+if(numberOfCards > 0){
+// Store a random number
+var card = Math.floor(Math.random() * cards.length);
+// Add card to the hand array
+hand.push(card);
+// Output the card
+console.log("Your card is " + cards[card]);
+// remove card selected from cards array
+cards.splice(card,1);
+// remove from numberOfCards
+numberOfCards--;
+// recursive function call 
+dealHand(numberOfCards);
+} 
+}
+function goFish(num, guess){ 
+// if num is greater than zero
+if( num >= 0){
+if(hand[num]===guess){
+console.log("A Match for", hand[num]);
+return;
+}
+else if(num===0){
+console.log("Go Fish: No matches for " + guess);
+}
+// remove from num
+num--;
+// recursive function call... remember to use both arguments
+goFish(num, guess);
+}
+}
+// Call dealHand and goFish
+dealHand(5); 
+
+goFish(hand.length,3); 
+PERO, ¿CÓMO ES EL “CONTROL FLOW” DE LA RECURSIÓN?
+
+function growBeanstalk(years) {
+  if (years <= 0) {
+    return 0;
+  }
+  else if (years <= 2) {
+    return 1;
+  }
+  return growBeanstalk(years - 1) + growBeanstalk(years - 2);
+}
+
+growBeanstalk(5);
+
+// THE FOLLOWING IS NOT REAL JAVASCRIPT
+// It is a visual guide to how values
+// are stored in the stack (from A to I).
+1. growBeanstalk(5) {
+    return growBeanstalk(4) + growBeanstalk(3);
+2.   growBeanstalk(4) {
+      return growBeanstalk(3) + growBeanstalk(2);
+3.     growBeanstalk(3) {
+        return growBeanstalk(2) + growBeanstalk(1);
+4.       growBeanstalk(2) {
+A=        return 1;
+         };
+5.       growBeanstalk(1) {
+B=        return 1;
+         };
+C=      return 2; // (1 + 1)
+       };
+6.     growBeanstalk(2) {
+D=      return 1;
+       };
+E=    return 3; // (2 + 1)
+     };
+7.   growBeanstalk(3) {
+      return growBeanstalk(2) + growBeanstalk(1);
+8.     growBeanstalk(2) {
+F=      return 1;
+       };
+9.     growBeanstalk(1) {
+G=      return 1;
+       };
+H=    return 2; // (1 + 1)
+     };
+I=  return 5; // (3 + 2)
+   };
